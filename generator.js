@@ -7,7 +7,11 @@ for(var i = 0; i < 250; i++) {
     var userAgent = new UserAgent({ deviceCategory: 'desktop' });
     console.log(`User Agent: "${userAgent}"`);
     
-    fs.appendFile('agents.txt', userAgent + "\n", function (err) {
+    fs.appendFile('agents.txt', `${userAgent}\n`, function (err) {
+        if (err) throw err;
+    });
+    
+    fs.appendFile('agents_list.txt', `"${userAgent}",\n`, function (err) {
         if (err) throw err;
     });
 }
